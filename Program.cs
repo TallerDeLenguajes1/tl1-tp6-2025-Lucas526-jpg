@@ -5,39 +5,56 @@ class Program
     static void Main()
     {
         int continuar = 1;
-
         while (continuar == 1)
         {
-            Console.Clear();
+            PedirOperacion();
+            int operacion= ValidarOperacion();
+            int num1=IngresarNumero(1);
+            int num2=IngresarNumero(2);
+            RealizarCalculo(operacion,num1,num2);
+            continuar= RepetirCalculo();
+        }
+    }
+    static void PedirOperacion()
+    {
+       Console.Clear();
             Console.WriteLine("=== Calculadora Basica ===");
             Console.WriteLine("1. Sumar");
             Console.WriteLine("2. Restar");
             Console.WriteLine("3. Multiplicar");
             Console.WriteLine("4. Dividir");
             Console.Write("Seleccione una opcion (1-4): ");
+    }
 
-            if (!int.TryParse(Console.ReadLine(), out int operacion) || operacion < 1 || operacion > 4)
+    static int ValidarOperacion(){
+    int operacion;
+        while (true)
+        {
+            if (int.TryParse(Console.ReadLine(), out operacion) && operacion >= 1 && operacion <= 4)
             {
-                Console.WriteLine("Opcion invalida.");
-                return;
+                return operacion;
             }
+            Console.WriteLine("Opción inválida. Intente nuevamente:");
+            Console.Write("Seleccione una opcion (1-4): ");
+        }
+    }
 
-            Console.Write("Ingrese el valor del numero 1: ");
-            if (!int.TryParse(Console.ReadLine(), out int num1))
+    static int IngresarNumero(int numero){
+        int valor;
+        while (true)
+        {
+            Console.Write($"Ingrese el valor del número {numero}: ");
+            if (int.TryParse(Console.ReadLine(), out valor))
             {
-                Console.WriteLine("Entrada inválida para número 1.");
-                return;
+                return valor;
             }
+            Console.WriteLine("Entrada inválida. Intente de nuevo.");
+        }
+    }
 
-            Console.Write("Ingrese el valor del numero 2: ");
-            if (!int.TryParse(Console.ReadLine(), out int num2))
-            {
-                Console.WriteLine("Entrada invalida para número 2.");
-                return;
-            }
-
-            int resultado;
-            switch (operacion)
+    static void RealizarCalculo(int operacion,int num1,int num2){
+        double resultado;
+        switch (operacion)
             {
                 case 1:
                     resultado = num1 + num2;
@@ -63,15 +80,16 @@ class Program
                     }
                     break;
             }
-
-            Console.WriteLine("\n¿Desea realizar otro calculo?");
+    }
+    static int RepetirCalculo(){
+        Console.WriteLine("\n¿Desea realizar otro calculo?");
             Console.WriteLine("1. Si");
             Console.WriteLine("2. No");
-            if (!int.TryParse(Console.ReadLine(), out continuar) || (continuar != 1 && continuar != 2))
+            if (!int.TryParse(Console.ReadLine(), out int continuar) || (continuar != 1 && continuar != 2))
             {
                 Console.WriteLine("Entrada no válida. Se finalizara el programa.");
                 continuar = 2;
             }
-        }
+            return continuar;
     }
 }
