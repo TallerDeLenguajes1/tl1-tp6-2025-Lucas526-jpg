@@ -2,18 +2,16 @@
 
 class Program{
     static void Main(){
-        Console.Write("Ingrese un numero");
+        Console.WriteLine("Ingrese un numero");
         string Entrada= Console.ReadLine() ?? "";
-        if (int.TryParse(Entrada,out int numero))
+        if (double.TryParse(Entrada,out double numero))
         {
-            int nuevoNum = 0;
-            while (numero != 0)
-            {
-                int digito = numero%10;
-                nuevoNum=nuevoNum*10 + digito;
-                numero = numero/10;
-            }
-            Console.WriteLine($"el numero resultante es: {nuevoNum}");
+            Console.WriteLine($"numero: {numero}");
+            Console.WriteLine($"Valor absoluto: {Math.Abs(numero)}");
+            Console.WriteLine($"El cuadrado: {Math.Pow(numero,2)}");
+            Console.WriteLine($"Raiz cuadrada: {Math.Sqrt(numero)}");
+            Console.WriteLine($"Seno: {Math.Sin(numero)}");
+            Console.WriteLine($"Coseno: {Math.Cos(numero)}");
         }else
         {
             Console.Write("Error");
