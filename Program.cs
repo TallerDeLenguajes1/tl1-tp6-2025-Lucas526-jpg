@@ -23,7 +23,6 @@ class Program
             Console.WriteLine("2. Restar");
             Console.WriteLine("3. Multiplicar");
             Console.WriteLine("4. Dividir");
-            Console.Write("Seleccione una opcion (1-4): ");
     }
 
     static int ValidarOperacion(){
