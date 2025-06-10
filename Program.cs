@@ -81,12 +81,12 @@ class Program
             }
     }
     static int RepetirCalculo(){
-        Console.WriteLine("\n¿Desea realizar otro calculo?");
+        Console.WriteLine("\nDesea realizar otro calculo?");
             Console.WriteLine("1. Si");
             Console.WriteLine("2. No");
             if (!int.TryParse(Console.ReadLine(), out int continuar) || (continuar != 1 && continuar != 2))
             {
-                Console.WriteLine("Entrada no válida. Se finalizara el programa.");
+                Console.WriteLine("Entrada no valida. Se finalizara el programa.");
                 continuar = 2;
             }
             return continuar;
